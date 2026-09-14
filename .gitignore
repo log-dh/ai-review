@@ -36,9 +36,15 @@ out/
 ### VS Code ###
 .vscode/
 
+### Claude Code ###
+.claude/
+
 ### Secrets ###
 application-secret.yml
 application-secret.yaml
 application-*-secret.yml
 *.env
 .env
+
+### Uploaded files ###
+/uploads/

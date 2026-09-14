@@ -17,3 +17,14 @@ mybatis:
   type-aliases-package: com.example.aireview.domain
   configuration:
     map-underscore-to-camel-case: true
+
+file:
+  upload-dir: uploads
+  allowed-extensions: pdf,docx
+  max-size-bytes: 20971520
+
+openai:
+  base-url: https://api.openai.com/v1/chat/completions
+  model: gpt-4o-mini
+  max-retries: 3
+  timeout-seconds: 30
