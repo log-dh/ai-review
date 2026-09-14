@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aireview.mapper.ReviewHistoryMapper">
+
+    <select id="findPage" resultType="com.example.aireview.dto.ReviewHistoryItem">
+        select rf.file_id as file_id,
+               rf.original_filename as original_filename,
+               rf.uploaded_at as uploaded_at,
+               f.overall_score as overall_score
+        from resume_file rf
+        left join feedback f on f.file_id = rf.file_id
+        order by rf.uploaded_at desc
+        limit #{size} offset #{offset}
+    </select>
+
+    <select id="countAll" resultType="long">
+        select count(*) from resume_file
+    </select>
+
+</mapper>
