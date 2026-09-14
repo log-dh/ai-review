@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aireview.mapper.FeedbackMapper">
+
+    <insert id="insert" parameterType="com.example.aireview.domain.Feedback" useGeneratedKeys="true" keyProperty="feedbackId">
+        insert into feedback (
+            file_id, overall_score, overall_comment,
+            job_fit_score, job_fit_comment,
+            logic_score, logic_comment,
+            writing_score, writing_comment,
+            typo_score, typo_comment
+        ) values (
+            #{fileId}, #{overallScore}, #{overallComment},
+            #{jobFitScore}, #{jobFitComment},
+            #{logicScore}, #{logicComment},
+            #{writingScore}, #{writingComment},
+            #{typoScore}, #{typoComment}
+        )
+    </insert>
+
+    <select id="findByFileId" resultType="com.example.aireview.domain.Feedback">
+        select feedback_id, file_id, overall_score, overall_comment,
+               job_fit_score, job_fit_comment,
+               logic_score, logic_comment,
+               writing_score, writing_comment,
+               typo_score, typo_comment,
+               created_at
+        from feedback
+        where file_id = #{fileId}
+    </select>
+
+</mapper>

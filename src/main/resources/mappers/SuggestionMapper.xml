@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aireview.mapper.SuggestionMapper">
+
+    <insert id="insertAll">
+        insert into suggestion (
+            feedback_id, category, original_excerpt, suggestion_text, reason, sort_order
+        ) values
+        <foreach collection="suggestions" item="s" separator=",">
+            (#{s.feedbackId}, #{s.category}, #{s.originalExcerpt}, #{s.suggestionText}, #{s.reason}, #{s.sortOrder})
+        </foreach>
+    </insert>
+
+    <select id="findByFeedbackId" resultType="com.example.aireview.domain.Suggestion">
+        select suggestion_id, feedback_id, category, original_excerpt, suggestion_text, reason, sort_order
+        from suggestion
+        where feedback_id = #{feedbackId}
+        order by sort_order
+    </select>
+
+</mapper>
