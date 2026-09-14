@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.aireview.mapper.ResumeTextMapper">
+
+    <insert id="insert" parameterType="com.example.aireview.domain.ResumeText" useGeneratedKeys="true" keyProperty="textId">
+        insert into resume_text (file_id, extracted_text)
+        values (#{fileId}, #{extractedText})
+    </insert>
+
+    <select id="findByFileId" resultType="com.example.aireview.domain.ResumeText">
+        select text_id, file_id, extracted_text, extracted_at
+        from resume_text
+        where file_id = #{fileId}
+    </select>
+
+</mapper>
